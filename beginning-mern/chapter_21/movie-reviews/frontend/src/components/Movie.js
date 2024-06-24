@@ -29,6 +29,19 @@ const Movie = props => {
          })
    };
 
+   const deleteReview = (reviewId, index) => {
+      movieService.deleteReview(reviewId, localStorage.getItem("id"))
+         .then(response => {
+            setMovie(prevState => {
+               prevState.reviews.splice(index, 1)
+               return ({ ...prevState })
+            })
+         })
+         .catch(error => {
+            console.error(error)
+         })
+   }
+
    useEffect(() => {
       getMovie(props.match.params.id) // eslint-disable-next-line
    }, [props.match.params.id]);
@@ -61,16 +74,14 @@ const Movie = props => {
                            <Card.Body>
                               <h5>{review.name + " reviewed on " + moment(review.date).format('Do MMMM YYYY')}</h5>
                               <p>{review.review}</p>
-                              {props.user && props.user.id === review.user_id &&
+                              {localStorage.getItem("name") && localStorage.getItem("id") === review.user_id &&
                                  <Row>
-                                    <Col><Link to={{
-                                       pathname: "/movies/" +
-                                          props.match.params.id +
-                                          "/review",
-                                       state: { currentReview: review }
-                                    }}>Edit</Link>
+                                    <Col>
+                                       <Link to={{ pathname: "/movies/" + props.match.params.id + "/review", state: { currentReview: review } }}>Edit</Link>
                                     </Col>
-                                    <Col><Button variant="link">Delete</Button></Col>
+                                    <Col>
+                                       <Button variant="link" onClick={() => deleteReview(review._id, index)}>Delete</Button>
+                                    </Col>
                                  </Row>
                               }
                            </Card.Body>

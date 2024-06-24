@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 const Login = props => {
    const [name, setName] = useState("")
    const [id, setId] = useState("")
+
    const onChangeName = e => {
       const name = e.target.value
       setName(name);
@@ -13,10 +14,15 @@ const Login = props => {
       const id = e.target.value
       setId(id);
    }
+
    const login = () => {
+      localStorage.setItem("user", true)
+      localStorage.setItem("name", name)
+      localStorage.setItem("id", id)
       props.login({ name: name, id: id })
       props.history.push('/')
    }
+
    return (
       <div>
          <Form>
