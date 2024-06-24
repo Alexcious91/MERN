@@ -1,21 +1,19 @@
 {
-  "name": "chapter_05",
+  "name": "chapter_five_movie_reviews",
   "version": "1.0.0",
-  "description": "MERN",
+  "description": "movie review",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
-  "author": "Rourke Scott",
+  "author": "Nyakallo Mahlakametsa",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.7.0"
-  },
-  "devDependencies": {
+    "mongodb": "^6.7.0",
     "nodemon": "^3.1.2"
   }
 }
