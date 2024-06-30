@@ -12,14 +12,14 @@ function AddReview(props) {
 
 	if (props.location.state && props.location.state.currentReview) {
 		editing = true
-		initialReviewState = props.location.state.currentReview.review
+		initialReviewState = props.location.state.currentReview.review 
 	};
 
 	const [review, setReview] = useState(initialReviewState);
 	const [submitted, setSubmitted] = useState(false);
 
-	const onChangeReview = e => {
-		const review = e.target.value;
+	const onChangeReview = event => {
+		const review = event.target.value;
 		setReview(review);
 	};
 
