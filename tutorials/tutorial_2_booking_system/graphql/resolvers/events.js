@@ -33,10 +33,10 @@ module.exports = { // resolvers
             description: args.eventInput.description,
             price: +args.eventInput.price,
             date: new Date(args.eventInput.date),
-            creator: "6684333d4a75f4cdcd4985b8"
+            creator: req.userId
          })
 
-         const userExists = await User.findById("6684333d4a75f4cdcd4985b8")
+         const userExists = await User.findById(req.userId)
 
          if (!userExists) {
             return new Error("User don't exists")
