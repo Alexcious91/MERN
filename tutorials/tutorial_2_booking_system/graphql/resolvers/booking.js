@@ -79,7 +79,6 @@ module.exports = { // resolvers
 
          await Booking.deleteOne({ _id: args.bookingId })
 
-         console.log(booking.event._doc.creator)
          console.log("Successfully cancelled booking");
 
          return event;
